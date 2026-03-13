@@ -1314,11 +1314,35 @@ footer .footer-logos {
     min-height: 100vh;
     padding-top: 5rem;
     padding-bottom: 2rem;
-    /* Reduce robot opacity for mobile */
+    position: relative;
+  }
+
+  /* Dark gradient overlay on hero for better text readability */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 5, 5, 0.5) 0%,
+      rgba(5, 5, 5, 0.2) 30%,
+      rgba(5, 5, 5, 0.2) 70%,
+      rgba(5, 5, 5, 0.6) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
   }
 
   #canvas-container {
-    opacity: 0.35 !important;
+    opacity: 0.25 !important;
   }
 
   .hero-content.hero-split-layout {
@@ -2359,6 +2383,11 @@ button,
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  /* Timeline mobile spacing */
+  .timeline {
+    padding: 3rem 1rem;
+  }
+
   .timeline::before {
     left: 20px;
   }

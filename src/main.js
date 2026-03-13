@@ -437,6 +437,19 @@ const timelineObserver = new IntersectionObserver((entries) => {
 
 timelineItems.forEach(item => timelineObserver.observe(item));
 
+// Scroll Reveal Observer for all sections
+const revealElements = document.querySelectorAll('.about-header, .about-card, .services-section .about-header, .cap-row, .testimonials-header, .timeline-item, .contact-container');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
 // Scroll Progress Navigation functionality
 const scrollNavNodes = document.querySelectorAll('.scroll-nav-node');
 const scrollNavProgress = document.querySelector('.scroll-nav-progress');
